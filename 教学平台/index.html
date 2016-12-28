@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>幻灯片左右滑动效果 —— www.miaov.com —— 妙味课堂</title>
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/reset.css" type="text/css"/>
+<script type="text/javascript" src="js/jquery-1.7.2.js" ></script>
+<script type="text/javascript">
+	 $(function(){
+	 	var curIndex = 0, 
+      imgLen = $(".imglist li").length; 
+  var autoChange = setInterval(function(){ 
+    if(curIndex < imgLen-1){ 
+      curIndex ++; 
+    }else{ 
+      curIndex = 0;
+    }
+    changeTo(curIndex); 
+  },2500);
+   /*$(".box").hover(function(){ 
+    clearInterval(autoChange);
+  },function(){ 
+    autoChangeAgain();
+  });*/
+  $(".prev").hover(function(){ 
+    clearInterval(autoChange);
+  },function(){ 
+    autoChangeAgain();
+  });
+  $(".prev").click(function(){ 
+    //根据curIndex滑动到上一个图片
+    curIndex = (curIndex > 0) ? (--curIndex) : (imgLen - 1);
+    changeTo(curIndex);
+  });
+  $(".next").hover(function(){ 
+    clearInterval(autoChange);
+  },function(){ 
+    //滑出则重置定时器
+    autoChangeAgain();
+  });
+  $(".next").click(function(){ 
+    curIndex = (curIndex < imgLen - 1) ? (++curIndex) : 0;
+    changeTo(curIndex);
+  });
+  //对右下角按钮index进行事件绑定
+  $(".indexlist").find("li").each(function(item){ 
+    $(this).hover(function(){ 
+      clearInterval(autoChange);
+      changeTo(item);
+      curIndex = item;
+    },function(){ 
+      autoChangeAgain();
+    });
+  });
+  //清除定时器时候的重置定时器
+  function autoChangeAgain(){ 
+      autoChange = setInterval(function(){ 
+      if(curIndex < imgLen-1){ 
+        curIndex ++;
+      }else{ 
+        curIndex = 0;
+      }
+      changeTo(curIndex); 
+    },2500);
+    }
+  function changeTo(num){ 
+    var goLeft = num * 760;
+    $(".imglist").animate({left: "-" + goLeft + "px"},50);
+    $(".indexlist").find("li").removeClass("active").eq(num).addClass("active");
+  }
+	 });
+</script>
+
+</head>
+
+<body>
+	<div class="logo">
+		<a href="#">
+			<img src="img/logo.png" alt="网站logo" />
+		</a>
+	</div>
+	
+	<div class="titie">
+		<ul class="pian" >
+			<li><a href="http://www.bslxx.com/edu/u/login">登录</a></li>
+			<li><a href="http://www.bslxx.com/edu/u/register">注册</a></li>
+		</ul>
+		<ul class="main">
+			<li><a href="http://www.bslxx.com/edu/" class="acti">首页</a></li>
+			<li><a href="http://www.bslxx.com/edu/course/index">成长课</a></li>
+			<li><a href="http://www.bslxx.com/edu/group/index">成长Bar</a></li>
+			<li><a href="http://www.bslxx.com/edu/cms/article">成长点拨</a></li>
+		</ul>
+    </div>
+	<div class="box" id="play">
+	    <p class="prev">&laquo;</p>
+	    <p class="next">&raquo;</p>
+	    <ol class="indexlist">
+	        <li class="active">1</li>
+	        <li>2</li>
+	        <li>3</li>
+	        <li>4</li>
+	        <li>5</li>
+	    </ol>
+	    <ul class="imglist">
+	        <li><a href="http://www.baidu.com/"><img src="img/6.jpg" alt="广告一" /></a></li>
+	        <li><a href="http://www.baidu.com/"><img src="img/7.jpg" alt="广告二" /></a></li>
+	        <li><a href="http://www.baidu.com/"><img src="img/8.png" alt="广告三" /></a></li>
+	        <li><a href="http://www.baidu.com/"><img src="img/9.png" alt="广告四" /></a></li>
+	        <li><a href="http://www.baidu.com/"><img src="img/10.png" alt="广告五" /></a></li>   
+	    </ul>
+	</div>
+
+</body>
+</html>
