@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#div1{
+				width: 100px;
+				height: 100px;
+				background-color: black;
+			}
+		</style>
+		
+		<script type="text/javascript">
+//			function getstyle(obj,attr){
+//				if(obj.currentStyle){
+//					return obj.currentStyle[attr];
+//				}
+//				else{
+//					return getComputedStyle(obj,false)[attr];
+//				}
+//			}
+//			window.onload = function(){
+//				var a = document.getElementById('div1');
+//				alert(getStyle(a,'width'));
+//			}
+		function getStyle(obj, attr)
+		{
+			if(obj.currentStyle)
+			{
+				return obj.currentStyle[attr];
+			}
+			else
+			{
+				return getComputedStyle(obj, false)[attr];
+			}
+		}
+		
+		window.onload=function ()
+		{
+			var oDiv=document.getElementById('div1');
+			
+			alert(getStyle(oDiv, 'width'));
+		}
+
+		</script>
+	</head>
+	
+	<body>
+		<div id="div1"></div>
+	</body>
+</html>
