@@ -1,0 +1,46 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+
+a:link{
+	background-color: #98FB98;
+}
+a:hover{
+	background-color: blueviolet;
+}
+.div{ 
+	width: 800px;
+	/*height: 30px;*/
+	/*background-color: paleturquoise;*/
+	margin: 40px auto;
+	list-style: none;
+	background-color: #98FB98;
+	overflow: auto;
+	height: 30px;
+}
+.div li{
+	/*width: 200px;
+	line-height: 14px;
+	margin: 8px 0px;*/
+	float: left;
+	width: 25%;
+	
+}
+.div a{
+	/*line-height: 14px;
+	margin: 8px 0px;
+	text-align: center; 
+	text-decoration: none;*/
+	display: block;
+	width: 100%;
+	line-height: 16px;
+	padding: 7px 0px;
+	list-style: none;
+	color: black;
+	text-align: center;
+	text-decoration: none;
+	
+	
+}
